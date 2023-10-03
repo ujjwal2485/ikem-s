@@ -16,7 +16,7 @@ const { roles } = require('../roles')
 require('dotenv').config()
 
 const asyncWrapper = require('../utils/catchAsync')
-const { cloudinaryDelete } = require('../cloudinary/index');
+// const { cloudinaryDelete } = require('../cloudinary/index');
 
 // get all users
 exports.fetchAllUsers = asyncWrapper(async (req, res, next) => {
@@ -256,13 +256,13 @@ exports.editAdmin = asyncWrapper(async (req, res) => {
     email: req.body.email
   }
 
-  if (req.file) {
-    if (oldAdmin.photo) cloudinaryDelete(oldAdmin.photo.storagePath, req.file)
-    newAdmin.photo = await {
-      storagePath: req.file.path,
-      contentType: req.file.mimetype
-    }
-  }
+  // if (req.file) {
+  //   if (oldAdmin.photo) cloudinaryDelete(oldAdmin.photo.storagePath, req.file)
+  //   newAdmin.photo = await {
+  //     storagePath: req.file.path,
+  //     contentType: req.file.mimetype
+  //   }
+  // }
   
   let update = await Admin.findOneAndUpdate({ _id: id }, newAdmin, {
     new: true
@@ -435,7 +435,7 @@ exports.deleteUser = asyncWrapper(async (req, res) => {
 exports.deleteAdmin = asyncWrapper(async (req, res) => {
   const admin = await Admin.findOne({ _id: req.user._id })
 
-  if (admin.photo) cloudinaryDelete(admin.photo.storagePath)
+  // if (admin.photo) cloudinaryDelete(admin.photo.storagePath)
 
   const adminFavourites = admin.favourites;
   if (adminFavourites[0]) {

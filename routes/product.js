@@ -14,7 +14,7 @@ const {
     grantAccess,
     getHeaderToken,
 } = require("../controllers/auth.controller");
-const { upload } = require("../middlewares/cloudinary");
+// const { upload } = require("../middlewares/cloudinary");
 
 
 router.route("/upload") 
@@ -22,7 +22,7 @@ router.route("/upload")
     getHeaderToken,
     checkIfLoggedIn,
     grantAccess("createOwn", "product"),
-    upload.single('picture'),
+    // upload.single('picture'),
     createProduct,
 );
 
@@ -35,7 +35,7 @@ router.route("/:id/edit").put(
     getHeaderToken,
     checkIfLoggedIn,
     grantAccess("updateAny", "product"),
-    upload.single('picture'),
+    // upload.single('picture'),
     editProduct
 );
     

@@ -1,4 +1,4 @@
-const multer = require('multer')
-const { storage } = require('../cloudinary/index')
+// const multer = require('multer')
+// const { storage } = require('../cloudinary/index')
 
-exports.upload = multer({ storage })
+// exports.upload = multer({ storage })

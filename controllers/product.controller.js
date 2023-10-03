@@ -4,7 +4,7 @@ const AppError = require('../utils/appError')
 const Favourite = require('../models/favourite')
 const ProductLike = require('../models/likes')
 const User = require('../models/user')
-const { cloudinaryDelete } = require('../cloudinary/index');
+// const { cloudinaryDelete } = require('../cloudinary/index');
 
 const asyncWrapper = require('../utils/catchAsync')
 
@@ -104,13 +104,13 @@ exports.editProduct = asyncWrapper(async (req, res) => {
     category: req.body.category
   }
 
-  if (req.file) {
-    if (oldProduct.productImage) cloudinaryDelete(oldProduct.productImage.storagePath, req.file)
-    newProduct.productImage = {
-      storagePath: req.file.path,
-      contentType: req.file.mimetype
-    }
-  }
+  // if (req.file) {
+  //   if (oldProduct.productImage) cloudinaryDelete(oldProduct.productImage.storagePath, req.file)
+  //   newProduct.productImage = {
+  //     storagePath: req.file.path,
+  //     contentType: req.file.mimetype
+  //   }
+  // }
 
   let update = await Product.findOneAndUpdate({ _id: id }, newProduct, {
     new: true
@@ -129,7 +129,7 @@ exports.deleteProduct = asyncWrapper(async (req, res) => {
   const imagePath = product.productImage.storagePath
    
   // Delete product image from cloudinary
-  if (imagePath) cloudinaryDelete(imagePath)
+  // if (imagePath) cloudinaryDelete(imagePath)
 
   // delete product from db
   const deleted = await Product.deleteOne({ _id: req.params.id })
