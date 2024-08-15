@@ -3,7 +3,7 @@ An API for an e-commerce website. Complete with authentication, authorization an
 Read documentation [here](https://docs.google.com/document/d/1QQ4SvOgUYSjFfYY-iZz7_7BaGae908HDgzVSrc7yIxw/edit?usp=sharing)
 
 API is hosted live [here](http://e-shop-tk9t.onrender.com/api/v1/)
-
+ 
 ## How to set up locally. 
 - Clone the repo.
 - Run `npm install` to install dependencies.
